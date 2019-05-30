@@ -15,6 +15,12 @@ CREATE TABLE users (
 SHOW tables;
 SHOW COLUMNS FROM users;
 SELECT * FROM users;
+DESCRIBE users;
+
+INSERT INTO sitename.users (first_name, email)
+VALUES ('Lady', 'gaga@gemail.com');
+-- generates a warning => 'last_name' doesn't have a default value
+
 
 INSERT INTO users
 (first_name, last_name, email, pass, registration_date)
@@ -87,11 +93,27 @@ SELECT first_name, last_name, user_id
 FROM sitename.users
 ORDER BY last_name DESC, first_name DESC;
 
+SELECT * FROM sitename.users
+WHERE last_name != 'Simpson'
+ORDER BY registration_date DESC;
+
 SELECT user_id, first_name, last_name, registration_date
 FROM sitename.users
 WHERE last_name NOT LIKE 'Simpson'
 ORDER BY registration_date DESC
 LIMIT 16;
+
+SELECT * FROM sitename.users
+LIMIT 10, 10;
+
+SELECT first_name, last_name
+FROM sitename.users
+ORDER BY registration_date ASC LIMIT 1, 1;
+-- second person to register
+
+SELECT first_name, last_name
+FROM sitename.users
+ORDER BY registration_date DESC LIMIT 1, 1;
 
 SELECT first_name, last_name, user_id, registration_date
 FROM sitename.users
@@ -110,6 +132,10 @@ SELECT *
 FROM sitename.users
 WHERE user_id = 18;
 
+UPDATE sitename.users
+SET first_name = 'dikes'
+WHERE user_id = 0;
+
 UPDATE sitename.users SET first_name = 'Mike' WHERE user_id = 0;
 UPDATE sitename.users SET email = 'mike@authors.com' WHERE user_id = 18
 LIMIT 1;
@@ -127,12 +153,22 @@ WHERE user_id = 8;
 DELETE FROM sitename.users
 WHERE user_id = 8 LIMIT 1;
 
+SELECT user_id
+FROM sitename.users
+WHERE first_name = 'Peter' AND last_name = 'Tork';
+
 SELECT *, UPPER(first_name) AS 'first Caps'
 from sitename.users;
 
 SELECT UPPER('this string');
 
+SELECT CONCAT('Hi I am Tariq', ' and my last name is', ' Tariq');
+-- trying to run w/o the SELECT keyword produces an error. 
+
 SELECT CONCAT(first_name, ' ', last_name) AS Name
+FROM sitename.users;
+
+SELECT registration_date AS reg
 FROM sitename.users;
 
 SELECT CONCAT(last_name, ', ', first_name) AS Name
@@ -142,7 +178,62 @@ ORDER BY Name DESC;
 -- longest last name
 SELECT LENGTH(last_name) AS L, last_name, user_id
 from sitename.users
-ORDER BY L DESC;
+ORDER BY L DESC LIMIT 1;
+
+SELECT CONCAT_WS(' ', first_name, last_name) AS 'WS Name'
+FROM sitename.users;
+
+SELECT CONCAT_WS(',     ', last_name, first_name) AS 'WS Name'
+FROM sitename.users;
+
+SELECT RAND();
+
+SELECT *
+FROM sitename.users
+ORDER BY RAND();
+
+SELECT CONCAT('$', FORMAT(2985.6, 2)) AS cost;
+
+SELECT email
+FROM sitename.users
+ORDER BY RAND() LIMIT 1;
+
+SELECT email, user_id
+FROM sitename.users
+ORDER BY RAND();
+
+SELECT MOD(12, 5);
+SELECT 9%2;
+
+SELECT DAYOFMONTH(7);
+-- returns null
+
+SELECT MONTHNAME(4);
+
+SELECT CURDATE() AS currentDate, CURTIME();
+
+SELECT CURTIME();
+
+SELECT NOW();
+
+SELECT DATE(registration_date) AS regDate
+FROM sitename.users
+ORDER BY registration_date DESC LIMIT 1;
+
+SELECT DAYNAME(registration_date) AS regDay
+FROM sitename.users
+ORDER BY registration_date ASC
+LIMIT 1;
+-- even w/o ORDER BY it yields the same result. Makes sense 
+
+SELECT LAST_DAY(CURDATE()), MONTHNAME(CURDATE());
+
+SELECT DAYNAME(LAST_DAY(CURDATE())), MONTHNAME(CURDATE());
+
+SELECT DATE_FORMAT(M d, Y -h:m);
+
+
+
 
 
 
