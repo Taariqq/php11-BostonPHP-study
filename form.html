@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Simple HTML Form</title>
+  <style>
+    body {
+      background: lightgrey;
+      color: #2B6A79;
+    }
+
+    LABEL {
+      font-weight: bold;
+      color: #300acc;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Script 2.1 - form.html -->
+  <form action="handleForm.php" method="post">
+    <fieldset>
+      <legend>Enter your information in the form below:</legend>
+      <p><label for="">Name: <input type="text" name="name" size="20" maxlength="40"></label></p>
+      <p><label for="">Email: <input type="email" name="email" size="40" maxlength="60"></label>
+      </p>
+      <p><label for="gender">Gender: </label>
+        <input type="radio" name="gender" value="M"> Male
+        <input type="radio" name="gender" value="F"> Female
+      </p>
+      <p><label for="">Age:
+          <select name="age" id="">
+            <option value="0-29">Under 30</option>
+            <option value="30-60">Between 30 and 60</option>
+            <option value="60+">Over 60</option>
+          </select></label></p>
+      <p><label for="">Comments: <textarea name="comments" id="" cols="40" rows="4"></textarea></label>
+      </p>
+    </fieldset>
+    <p align="center"><input type="submit" name="submit" value="Submit My Information">
+    </p>
+  </form>
+</body>
+
+</html>
