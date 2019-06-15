@@ -28,6 +28,9 @@
   } else {
     $gender = NULL;
   }
+  # the "null coalescing operator (??) is written like
+  # $gender = $_POST['gender'] ?? NULL; // and does the same as above
+  
   // print submitted info
   echo "<p>Thank you, <b>$name</b>, for the following comments:</p>
   <pre>$comments</pre>
@@ -40,6 +43,10 @@
   } else {// nothing selected 
     echo '<p><b>You forgot to specify the gender</b></p>';
   }
+  // to print the gender and age
+  $age = $_POST['age'];
+  $gender == M ? ($gen = 'Male') : ($gen = 'Female');
+  echo 'Your entered age is '.$age.' with gender being '.$gen;
   
   ?>
 

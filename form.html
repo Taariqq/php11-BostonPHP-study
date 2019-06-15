@@ -10,20 +10,20 @@
       color: #2B6A79;
     }
 
-    LABEL {
+    label{
       font-weight: bold;
       color: #300acc;
     }
-
   </style>
 </head>
 
 <body>
   <!-- Script 2.1 - form.html -->
-  <form action="handleForm.php" method="post">
+  <form action="handleForm2.5.php" method="post">
     <fieldset>
       <legend>Enter your information in the form below:</legend>
-      <p><label for="">Name: <input type="text" name="name" size="20" maxlength="40"></label></p>
+      <p><label for="">Name: <input type="text" name="name" size="20" maxlength="40"></label>
+      </p>
       <p><label for="">Email: <input type="email" name="email" size="40" maxlength="60"></label>
       </p>
       <p><label for="gender">Gender: </label>
@@ -35,7 +35,8 @@
             <option value="0-29">Under 30</option>
             <option value="30-60">Between 30 and 60</option>
             <option value="60+">Over 60</option>
-          </select></label></p>
+          </select></label>
+      </p>
       <p><label for="">Comments: <textarea name="comments" id="" cols="40" rows="4"></textarea></label>
       </p>
     </fieldset>

@@ -21,9 +21,7 @@
 
 <body>
   <?php # Script 2.4 - handleForm.php #3 
-  # the "null coalescing operator (??) is written like
-  # $gender = $_POST['gender'] ?? NULL; // and does the same as follows
-  
+
   // validate the name
   if (!empty($_POST['name'])) {
     $name = $_POST['name'];
