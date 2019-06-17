@@ -13,7 +13,7 @@
   echo "it is the php that lags, and lag it does, quite badly, indeed<br>";
   
   $foo = 'hi, world!';
-  echo $foo;
+
   echo "<hr>";
   phpinfo();
     
