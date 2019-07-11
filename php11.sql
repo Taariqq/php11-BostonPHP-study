@@ -14,7 +14,7 @@ CREATE TABLE users (
 	
 SHOW tables;
 SHOW COLUMNS FROM users;
-SELECT * FROM users;
+SELECT * FROM sitename.users;
 DESCRIBE users;
 
 INSERT INTO sitename.users (first_name, email)
@@ -32,15 +32,15 @@ INSERT INTO users VALUES
 
 -- insert several values at once. supported in mysql but not in standard sql
 
-INSERT INTO users
-	(first_name, last_name, email, pass, registration_date)
+INSERT INTO users (first_name, last_name, email, pass, registration_date)
 	VALUES
 	('Paul', 'McCartney', 'paul@beatles.com', SHA2('letITbe', 512), NOW()),
 	('john', 'Lennon', 'john@beatles.com', SHA2('Happin3ss', 512), NOW()),
 	('George', 'Harrison', 'george@beatles.com', SHA2('something', 512), NOW()),
 	('Ringo', 'Starr', 'ringo@beatles.com', SHA2('thisboy', 512), NOW());
 
-INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES
+INSERT INTO users (first_name, last_name, email, pass, registration_date) 
+	VALUES
 ('David', 'Jones', 'davey@monkees.com', SHA2('fasfd', 512), NOW()),
 ('Peter', 'Tork', 'peter@monkees.com', SHA2('warw', 512), NOW()),
 ('Micky', 'Dolenz', 'micky@monkees.com ', SHA2('afsa', 512), NOW()),
@@ -67,7 +67,7 @@ FROM sitename.users;
 
 SELECT first_name 
 FROM sitename.users
-WHERE first_name = 'larry'
+WHERE first_name = 'larry';
 
 SELECT *
 FROM sitename.users
@@ -230,7 +230,22 @@ SELECT LAST_DAY(CURDATE()), MONTHNAME(CURDATE());
 
 SELECT DAYNAME(LAST_DAY(CURDATE())), MONTHNAME(CURDATE());
 
-SELECT DATE_FORMAT(M d, Y -h:m);
+SELECT DATE_FORMAT(M d, Y -h:m); -- error
+
+USE sitename;
+SELECT *
+FROM sitename.users;
+
+SHOW DATABASES;
+
+SELECT COUNT(*)
+FROM sitename.users;
+
+DELETE FROM sitename.users
+WHERE user_id = 36;
+
+DELETE FROM sitename.users
+WHERE user_id IN (35, 37);
 
 
 
